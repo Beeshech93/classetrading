@@ -1,0 +1,10 @@
+"use client";
+import {useState} from "react";
+import {useRouter} from "next/navigation";
+import {createClient} from "@/lib/supabase/browser";
+export default function CourseManager({courses}:{courses:any[]}){
+ const [title,setTitle]=useState("");const [slug,setSlug]=useState("");const [description,setDescription]=useState("");const [busy,setBusy]=useState(false);const [error,setError]=useState("");const router=useRouter();
+ async function create(e:React.FormEvent){e.preventDefault();setBusy(true);setError("");const {error}=await createClient().from("courses").insert({title,slug,description,is_published:false});setBusy(false);if(error){setError(error.message);return;}setTitle("");setSlug("");setDescription("");router.refresh();}
+ async function toggle(id:string,published:boolean){const {error}=await createClient().from("courses").update({is_published:!published}).eq("id",id);if(error)setError(error.message);else router.refresh();}
+ return <div><form onSubmit={create} className="panel p-6"><h2 className="font-bold">Créer un cours</h2><div className="mt-4 grid gap-3 md:grid-cols-2"><input className="field" placeholder="Titre du cours" required value={title} onChange={e=>setTitle(e.target.value)}/><input className="field" placeholder="slug-du-cours" required pattern="[a-z0-9-]+" value={slug} onChange={e=>setSlug(e.target.value)}/></div><textarea className="field mt-3" placeholder="Description" value={description} onChange={e=>setDescription(e.target.value)}/><button className="btn mt-4" disabled={busy}>{busy?"Création...":"Créer le cours"}</button>{error&&<p className="mt-3 text-sm text-red-400">{error}</p>}</form><div className="mt-6 space-y-3">{courses.map(c=><div className="panel flex flex-wrap items-center justify-between gap-3 p-5" key={c.id}><div><h3 className="font-bold">{c.title}</h3><p className="muted text-xs">/{c.slug} · {c.is_published?"Publié":"Brouillon"}</p></div><div className="flex gap-2"><a className="btn btn-secondary" href={"/admin/courses/"+c.id}>Gérer les leçons</a><button className="btn" onClick={()=>toggle(c.id,c.is_published)}>{c.is_published?"Dépublier":"Publier"}</button></div></div>)}</div></div>;
+}
