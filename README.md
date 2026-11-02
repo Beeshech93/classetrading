@@ -24,10 +24,12 @@ Plataforma privada de formación en trading.
 ## Configuración
 1. Crear un proyecto en Supabase.
 2. Ejecutar `supabase/schema.sql` en SQL Editor.
-3. Copiar `.env.example` a `.env.local` y completar las variables.
-4. Instalar dependencias y ejecutar el entorno local.
+3. Ejecutar `supabase/admin-review.sql` y luego `supabase/admin-profiles-policy.sql`.
+4. Registrar tu cuenta desde `/register`; después ejecutar `supabase/bootstrap-admin.sql` en SQL Editor sustituyendo `YOUR_ADMIN_EMAIL@example.com` por tu correo.
+5. Copiar `.env.example` a `.env.local` y completar las variables.
+6. Ejecutar `npm install` y `npm run dev`.
 
 Nunca expongas `SUPABASE_SERVICE_ROLE_KEY` en el navegador ni la subas al repositorio.
 
 ## Estado
-Fundación técnica y modelo de acceso documentados. La interfaz, las rutas protegidas, la carga de comprobantes y el panel administrativo se implementan en las siguientes etapas.
+Primera versión de MVP: landing page, registro, login, dashboard de alumno, solicitud e historial de pagos, catálogo y detalle de cursos protegidos, calendario de clases Zoom y cola de revisión administrativa. Pendientes: carga de comprobantes, CRUD visual de cursos y clases, traducciones completas, pruebas automatizadas y despliegue.
