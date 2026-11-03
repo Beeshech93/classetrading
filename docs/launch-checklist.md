@@ -7,6 +7,7 @@ Run the SQL files in this order:
 3. `supabase/admin-profiles-policy.sql`
 4. `supabase/security-hardening.sql`
 5. `supabase/storage.sql`
+6. `supabase/payment-integrity-hardening.sql`
 
 Then create the first account at `/register` and run `supabase/bootstrap-admin.sql` after replacing the placeholder email with the exact admin email.
 
