@@ -50,14 +50,8 @@ using (
   and public.is_admin()
 );
 
--- A student can remove only a proof stored in their own folder. No UPDATE
--- policy is provided: uploads use unique paths and upsert=false.
+-- Submitted proof files are immutable. In particular, students cannot
+-- delete a file after attaching it to a payment request. Failed submissions
+-- can leave an orphaned upload; cleanup should be an administrator-only task.
 drop policy if exists "students delete own payment proofs" on storage.objects;
-create policy "students delete own payment proofs"
-on storage.objects
-for delete
-to authenticated
-using (
-  bucket_id = 'payment-proofs'
-  and (storage.foldername(name))[1] = auth.uid()::text
-);
+drop policy if exists "students update own payment proofs" on storage.objects;
