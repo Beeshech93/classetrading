@@ -7,6 +7,8 @@ Run the SQL files in this order:
 3. `supabase/admin-profiles-policy.sql`
 4. `supabase/security-hardening.sql`
 5. `supabase/storage.sql`
+6. `supabase/payment-integrity-hardening.sql`
+7. `supabase/pocket-option-curriculum.sql` (optional; review the educational material before publishing)
 
 Then create the first account at `/register` and run `supabase/bootstrap-admin.sql` after replacing the placeholder email with the exact admin email.
 
@@ -34,9 +36,9 @@ Open `http://localhost:3000`.
 - Verify funds externally before clicking Approve. Approval starts exactly 30 days of access.
 
 ## Required production checks
-- Configure Supabase Auth email templates and allowed redirect URLs.
+- Configure Supabase Auth email templates and allowed redirect URLs, including `/reset-password` on production and local development.
 - Configure Vercel environment variables.
-- Test signup, login, logout, storage upload, signed proof links, admin authorization, and payment approval/rejection.
+- Test signup, login, password recovery, logout, storage upload, signed proof links, admin authorization, and payment approval/rejection.
 - Confirm all paid media is hosted privately or behind signed playback URLs. Do not paste public video URLs if content must remain exclusive.
 - Set a clear payment destination and exact transfer instructions for the student.
 - Add privacy policy, terms, risk disclosure, and customer support contact.

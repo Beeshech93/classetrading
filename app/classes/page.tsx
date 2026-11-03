@@ -6,7 +6,7 @@ export default async function ClassesPage(){
  const supabase=createClient();
  const {data:{user}}=await supabase.auth.getUser();
  if(!user)redirect("/login");
- const {data:member}=await supabase.from("memberships").select("id").eq("user_id",user.id).eq("status","active").gt("ends_at",new Date().toISOString()).limit(1).maybeSingle();
+ const {data:member}=await supabase.from("memberships").select("id").eq("user_id",user.id).eq("status","active").lte("starts_at",new Date().toISOString()).gt("ends_at",new Date().toISOString()).limit(1).maybeSingle();
  if(!member)redirect("/membership");
  const {data:classes}=await supabase.from("live_classes").select("id,title,description,meeting_url,starts_at,ends_at,recording_url").eq("is_published",true).order("starts_at",{ascending:true});
  const upcoming=(classes||[]).filter(c=>new Date(c.starts_at).getTime()>=Date.now());
