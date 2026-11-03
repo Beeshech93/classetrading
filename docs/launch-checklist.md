@@ -8,6 +8,7 @@ Run the SQL files in this order:
 4. `supabase/security-hardening.sql`
 5. `supabase/storage.sql`
 6. `supabase/payment-integrity-hardening.sql`
+7. `supabase/pocket-option-curriculum.sql` (opcional; revisar el material antes de publicarlo)
 
 Then create the first account at `/register` and run `supabase/bootstrap-admin.sql` after replacing the placeholder email with the exact admin email.
 
