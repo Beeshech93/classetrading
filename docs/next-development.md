@@ -7,9 +7,10 @@
 - Admin can schedule Zoom classes, add meeting and recording links, and publish/unpublish sessions.
 - Admin student roster shows the latest membership state.
 - Admin dashboard links to course and Zoom management.
+- Added `supabase/security-hardening.sql`: membership RLS checks now evaluate only the signed-in user's own membership; helper execution is restricted to authenticated users.
 
 ## SQL prerequisite
-Run `supabase/storage.sql` after the existing schema and admin policy scripts.
+Run `supabase/security-hardening.sql` after `schema.sql`, `admin-review.sql`, and `admin-profiles-policy.sql`; run `storage.sql` after those migrations.
 
 ## Current known limitations
 - The language preference UI and complete Spanish/French translation catalog are not implemented yet.
