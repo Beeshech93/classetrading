@@ -8,7 +8,7 @@
 - Admin class management now captures session objectives, Zoom meeting links, schedule, and optional replay URL with a clearer publishing workflow.
 - Zoom links are validated to require HTTPS before saving.
 
-## Existing product capabilities
+## Starter Pocket Option curriculum\n- Added `supabase/pocket-option-curriculum.sql` with four published starter courses and twelve lessons covering platform orientation, chart basics, candlesticks, market structure, support/resistance, indicators, risk awareness, journaling, and demo practice.\n- Run this seed after the base schema and security policies. It is safe to re-run: courses are matched by slug and lessons by course/title.\n- Review and adapt all course content before offering it to students; it is educational material, not a trading signal or a promise of performance.\n\n## Existing product capabilities
 - One-time USD 200 membership for 30 days, activated after manual payment approval.
 - Supabase-backed student accounts, membership checks, payment requests, courses, lessons, and live classes.
 - French/Spanish language selector currently applies to selected student-facing screens; class content and admin screens are still authored in French.
