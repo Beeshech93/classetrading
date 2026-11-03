@@ -26,6 +26,6 @@ export default function Home() {
     <section className="container grid gap-4 pb-20 md:grid-cols-3">
       {["Formation progressive","Sessions Zoom","Suivi pédagogique"].map((t,i)=><div className="panel p-6" key={t}><div className="mb-3 text-2xl" style={{color:"#d7a84b"}}>0{i+1}</div><h2 className="font-bold">{t}</h2><p className="muted mt-2 text-sm">{["Des modules et leçons pour développer une méthode d'analyse.","Un calendrier de sessions en direct et des replays accessibles aux membres actifs.","Un espace personnel pour suivre les cours et la durée de son accès."][i]}</p></div>)}
     </section>
-    <footer className="container border-t border-slate-800 py-8 text-xs muted">© {new Date().getFullYear()} ClasseTrading · Français / Español</footer>
+    <footer className="container flex flex-wrap items-center justify-between gap-4 border-t border-slate-800 py-8 text-xs muted"><span>© {new Date().getFullYear()} ClasseTrading · Français / Español</span><nav className="flex flex-wrap gap-4"><Link href="/terms">Conditions</Link><Link href="/privacy">Confidentialité</Link><Link href="/risk-disclosure">Risques du trading</Link></nav></footer>
   </main>;
 }
