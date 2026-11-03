@@ -33,4 +33,4 @@ Plataforma privada de formación en trading.
 Nunca expongas `SUPABASE_SERVICE_ROLE_KEY` en el navegador ni la subas al repositorio.
 
 ## Estado
-MVP en construcción: landing page, registro, login, dashboard de alumno, solicitud e historial de pagos con carga privada de comprobantes, catálogo y detalle de cursos protegidos, gestión administrativa de cursos/lecciones, calendario y gestión de clases Zoom, cola de revisión administrativa y workflow CI. Pendientes: traducciones completas, pruebas de integración en Supabase real, políticas finales de almacenamiento multimedia y despliegue.
+MVP en construcción: landing page, registro, login, recuperación de contraseña, dashboard de alumno, solicitud e historial de pagos con carga privada de comprobantes, catálogo y detalle de cursos protegidos, gestión administrativa de cursos/lecciones, calendario y gestión de clases Zoom, cola de revisión administrativa y workflow CI. Pendientes: traducciones completas, pruebas de integración en Supabase real, políticas finales de almacenamiento multimedia y despliegue.
