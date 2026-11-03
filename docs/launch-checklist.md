@@ -5,9 +5,12 @@ Run the SQL files in this order:
 1. `supabase/schema.sql`
 2. `supabase/admin-review.sql`
 3. `supabase/admin-profiles-policy.sql`
-4. `supabase/storage.sql`
+4. `supabase/security-hardening.sql`
+5. `supabase/storage.sql`
 
-Create the first account at `/register`, then run `supabase/bootstrap-admin.sql` after replacing the placeholder email with the exact admin email.
+Then create the first account at `/register` and run `supabase/bootstrap-admin.sql` after replacing the placeholder email with the exact admin email.
+
+The security-hardening migration replaces the membership helper that accepted an arbitrary user ID with a current-user-only check. Run it after the initial policies exist. If you already ran the older setup, this migration is still intended to be applied once.
 
 ## Local environment
 Copy `.env.example` to `.env.local` and set:
