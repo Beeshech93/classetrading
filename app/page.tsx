@@ -4,33 +4,15 @@ import {useI18n} from "@/components/i18n-provider";
 
 export default function Home() {
   const {t}=useI18n();
-  const features=[t("progressive"),t("sessions"),t("support")];
-  const descriptions=[t("progressiveText"),t("sessionsText"),t("supportText")];
+  const features=[{n:"01",title:t("progressive"),desc:t("progressiveText"),icon:"↗"},{n:"02",title:t("sessions"),desc:t("sessionsText"),icon:"◷"},{n:"03",title:t("support"),desc:t("supportText"),icon:"◎"}];
   return <main>
-    <header className="container flex items-center justify-between py-6 pr-20">
-      <Link href="/" className="text-xl font-black tracking-wide">CLASSE<span style={{color:"#d7a84b"}}>TRADING</span></Link>
-      <nav className="flex gap-3 text-sm"><Link className="muted px-3 py-2" href="/login">{t("login")}</Link><Link className="btn" href="/register">{t("join")}</Link></nav>
-    </header>
-    <section className="container grid items-center gap-10 py-20 md:grid-cols-2">
-      <div>
-        <p className="mb-5 text-sm font-bold uppercase tracking-[.25em]" style={{color:"#d7a84b"}}>{t("academy")}</p>
-        <h1 className="text-5xl font-black leading-tight md:text-6xl">{t("hero1")} <span style={{color:"#d7a84b"}}>{t("hero2")}</span></h1>
-        <p className="muted mt-6 max-w-xl text-lg">{t("intro")}</p>
-        <div className="mt-8 flex flex-wrap gap-3"><Link className="btn" href="/register">{t("access")}</Link><Link className="btn btn-secondary" href="/login">{t("student")}</Link></div>
-        <p className="muted mt-4 text-xs">{t("risk")}</p>
-      </div>
-      <div className="panel p-8">
-        <p className="muted text-sm">{t("membership")}</p>
-        <div className="mt-3 text-6xl font-black">$200<span className="text-lg font-medium"> USD</span></div>
-        <p className="muted mt-2">{t("oneTime")}</p>
-        <hr className="my-6 border-slate-700"/>
-        <ul className="space-y-3 text-sm"><li>✓ {t("courses")}</li><li>✓ {t("zoom")}</li><li>✓ {t("replays")}</li><li>✓ {t("analysis")}</li><li>✓ {t("community")}</li></ul>
-        <Link href="/register" className="btn mt-8 w-full">{t("signupPrice")}</Link>
-      </div>
+    <header className="site-header"><div className="container flex items-center justify-between pr-20"><Link href="/" className="brand">CLASSE<span>TRADING</span></Link><nav className="flex items-center gap-5"><Link className="nav-link hidden sm:inline" href="/login">{t("login")}</Link><Link className="btn" href="/register">{t("join")} <span>↗</span></Link></nav></div></header>
+    <section className="container hero-grid">
+      <div><p className="eyebrow mb-6">{t("academy")}</p><h1 className="hero-title">{t("hero1")} <span className="gold-text">{t("hero2")}</span></h1><p className="hero-copy mt-6">{t("intro")}</p><div className="mt-9 flex flex-wrap gap-3"><Link className="btn" href="/register">{t("access")} <span>→</span></Link><Link className="btn btn-secondary" href="/login">{t("student")}</Link></div><div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs muted"><span>✦ Forex & XAUUSD</span><span>✦ Sessions en direct</span><span>✦ Parcours structuré</span></div><p className="muted mt-5 text-xs">{t("risk")}</p></div>
+      <div className="hero-visual"><div className="orbit"></div><div className="market-card z-10"><div className="flex items-start justify-between"><div><p className="text-xs tracking-widest muted">MARKET OVERVIEW</p><p className="mt-2 text-2xl font-bold">XAU / USD</p></div><span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-300">● LIVE STUDY</span></div><div className="mt-5 flex items-end gap-3"><span className="text-4xl font-bold tracking-tight">2,384.50</span><span className="pb-1 text-sm text-emerald-300">+1.24%</span></div><svg className="market-chart" viewBox="0 0 400 150" fill="none" role="img" aria-label="Illustration de graphique de marché"><defs><linearGradient id="chartFill" x1="200" y1="0" x2="200" y2="150" gradientUnits="userSpaceOnUse"><stop stopColor="#D9B36C" stopOpacity=".28"/><stop offset="1" stopColor="#D9B36C" stopOpacity="0"/></linearGradient></defs><path d="M0 118L28 105L52 111L77 80L101 91L128 67L153 75L180 45L204 57L230 31L254 50L282 24L308 42L334 18L359 29L400 7V150H0V118Z" fill="url(#chartFill)"/><path d="M0 118L28 105L52 111L77 80L101 91L128 67L153 75L180 45L204 57L230 31L254 50L282 24L308 42L334 18L359 29L400 7" stroke="#D9B36C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg><div className="market-stat"><span className="muted">Formation</span><strong>Analyse technique</strong></div><div className="market-stat"><span className="muted">Programme</span><strong>30 jours</strong></div><div className="market-stat"><span className="muted">Format</span><strong>En ligne · Zoom</strong></div></div></div>
     </section>
-    <section className="container grid gap-4 pb-20 md:grid-cols-3">
-      {features.map((feature,i)=><div className="panel p-6" key={feature}><div className="mb-3 text-2xl" style={{color:"#d7a84b"}}>0{i+1}</div><h2 className="font-bold">{feature}</h2><p className="muted mt-2 text-sm">{descriptions[i]}</p></div>)}
-    </section>
-    <footer className="container flex flex-wrap items-center justify-between gap-4 border-t border-slate-800 py-8 pr-20 text-xs muted"><span>© {new Date().getFullYear()} ClasseTrading · Français / Español</span><nav className="flex flex-wrap gap-4"><Link href="/terms">{t("terms")}</Link><Link href="/privacy">{t("privacy")}</Link><Link href="/risk-disclosure">{t("riskLink")}</Link></nav></footer>
+    <section className="container section-space border-t border-white/[.07]"><div className="mb-9 max-w-2xl"><p className="eyebrow mb-4">L'EXPÉRIENCE CLASSETRADING</p><h2 className="text-3xl font-bold md:text-4xl">Une méthode claire. <span className="gold-text">Une progression structurée.</span></h2><p className="muted mt-4 leading-7">Apprends avec un parcours organisé, des ressources pédagogiques et des sessions en direct.</p></div><div className="feature-grid">{features.map((f)=><article className="feature-card" key={f.n}><div className="mb-7 flex items-center justify-between"><span className="feature-number">{f.n} / 03</span><span className="text-2xl" style={{color:"#d9b36c"}}>{f.icon}</span></div><h3 className="text-lg font-bold">{f.title}</h3><p className="muted mt-3 text-sm leading-6">{f.desc}</p></article>)}</div></section>
+    <section className="container section-space border-t border-white/[.07]"><div className="pricing-grid"><div><p className="eyebrow mb-4">{t("membership")}</p><h2 className="text-3xl font-bold md:text-4xl">Investis dans tes <span className="gold-text">compétences.</span></h2><p className="muted mt-4 max-w-xl leading-7">{t("oneTime")}. L'accès est activé après vérification manuelle du paiement et reste valable pendant 30 jours.</p></div><div className="price-card"><p className="muted text-xs font-bold tracking-[.18em]">{t("plan")}</p><div className="mt-4 flex items-end gap-2"><span className="text-6xl font-extrabold tracking-tight">$200</span><span className="muted mb-2 text-sm">USD</span></div><p className="muted mt-2 text-sm">{t("oneTime")}</p><div className="my-7 space-y-4">{[t("courses"),t("zoom"),t("replays"),t("analysis"),t("community")].map(x=><div className="check-line" key={x}><span className="check-icon">✓</span><span>{x}</span></div>)}</div><Link href="/register" className="btn w-full">{t("signupPrice")} <span>→</span></Link><p className="muted mt-4 text-center text-[11px]">Paiement manuel · Validation par l'administration</p></div></div></section>
+    <footer className="border-t border-white/[.07]"><div className="container flex flex-wrap items-center justify-between gap-4 py-8 text-xs muted"><span>© {new Date().getFullYear()} ClasseTrading · Français / Español</span><nav className="flex flex-wrap gap-5"><Link href="/terms">{t("terms")}</Link><Link href="/privacy">{t("privacy")}</Link><Link href="/risk-disclosure">{t("riskLink")}</Link></nav></div></footer>
   </main>;
 }
