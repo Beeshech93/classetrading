@@ -24,10 +24,11 @@ Plataforma privada de formación en trading.
 ## Configuración
 1. Crear un proyecto en Supabase.
 2. Ejecutar `supabase/schema.sql` en SQL Editor.
-3. Ejecutar `supabase/admin-review.sql`, `supabase/admin-profiles-policy.sql` y `supabase/storage.sql`.
+3. Ejecutar `supabase/admin-review.sql`, `supabase/admin-profiles-policy.sql`, `supabase/security-hardening.sql`, `supabase/storage.sql` y `supabase/payment-integrity-hardening.sql`.
 4. Registrar tu cuenta desde `/register`; después ejecutar `supabase/bootstrap-admin.sql` en SQL Editor sustituyendo `YOUR_ADMIN_EMAIL@example.com` por tu correo.
-5. Copiar `.env.example` a `.env.local` y completar las variables.
-6. Ejecutar `npm install` y `npm run dev`.
+5. Ejecutar `supabase/pocket-option-curriculum.sql` para cargar los cursos iniciales (revisar el contenido antes de publicarlo).
+6. Copiar `.env.example` a `.env.local` y completar las variables.
+7. Ejecutar `npm install` y `npm run dev`.
 
 Nunca expongas `SUPABASE_SERVICE_ROLE_KEY` en el navegador ni la subas al repositorio.
 
